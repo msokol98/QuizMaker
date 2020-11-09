@@ -1,6 +1,11 @@
+.quiz-creation-form {
+    padding: 50px;
+    max-width: 600px;
+    margin-left: 5%;
+}
+
 .new-question {
     padding: 50px 0;
-    width: 60%;
     min-width: 300px;
 }
 
@@ -12,4 +17,13 @@
     margin: 15px 0;
     display: flex;
     align-items: center;
+}
+
+.quiz-topic {
+    margin-bottom: 10px;
+}
+
+.correct-answer {
+    color: #fff;
+    background-color: #4BB543 !important;
 }

@@ -1,10 +1,23 @@
 import React from 'react';
 import Question from './question';
 import NewQuestion from './newQuestion';
+import './styles.css';
 
-const QuizCreationForm = ({ topic, questions, submitQuestion, addQuestion, addingQuestion, submitQuiz }) => (
-    <div>
-        <h2>{topic}</h2>
+const QuizCreationForm = ({ topic, setTopic, questions, submitQuestion, addQuestion, addingQuestion, submitQuiz }) => (
+    
+    <div className="quiz-creation-form">
+
+        <h4 className="has-text-weight-light">Topic</h4>
+        
+        <input 
+            required
+            type="text" 
+            placeholder="What is the quiz topic?" 
+            value={topic} 
+            onChange={e => setTopic(e.target.value)} 
+            className="input quiz-topic" 
+        />
+
         {questions.map((question, idx) => <Question key={idx} question={question} number={idx+1} />)}
 
         {addingQuestion ? 
@@ -16,7 +29,8 @@ const QuizCreationForm = ({ topic, questions, submitQuestion, addQuestion, addin
             </div>
         }
     </div>
-)
+
+);
 
  
 export default QuizCreationForm;

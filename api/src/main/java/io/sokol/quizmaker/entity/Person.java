@@ -20,8 +20,8 @@ public class Person {
     @OneToMany(mappedBy = "creator")
     private Set<Quiz> createdQuizzes = new HashSet<>();
 
-    @ManyToMany(mappedBy = "takers")
-    private Set<Quiz> takenQuizzes = new HashSet<>();
+    /*@ManyToMany(mappedBy = "takers")
+    private Set<Quiz> takenQuizzes = new HashSet<>();*/
 
     public long getId() {
         return id;
@@ -67,12 +67,12 @@ public class Person {
         createdQuizzes.add(quiz);
     }
 
-    public Set<Quiz> getTakenQuizzes() {
+    /*public Set<Quiz> getTakenQuizzes() {
         return takenQuizzes;
     }
 
     public void takeQuiz(Quiz quiz) {
         takenQuizzes.add(quiz);
-    }
+    }*/
 
 }

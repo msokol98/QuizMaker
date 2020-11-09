@@ -12,7 +12,8 @@ class NewQuestion extends Component {
             {body: ""},
             {body: ""},
             {body: ""}
-        ]
+        ],
+        correctAnswer: null
     }
 
     removeAnswer = deletionIdx => {
@@ -41,15 +42,25 @@ class NewQuestion extends Component {
     }
 
     setCorrectAnswer = idx => {
-        console.log(idx)
         this.setState({correctAnswer: mapIdxToLetter(idx)});
     }
 
     submitQuestion = () => {
-        if(!this.state.correctAnswer)
+        if(!this.state.correctAnswer) {
             alert("You must choose a correct answer.");
-        else
-            this.props.submitQuestion(this.state);
+        } else {
+            const { answerChoices } = this.state;
+            const answerChoicesWithLetters = answerChoices.map((answerChoice, idx) => {
+                return {
+                    ...answerChoice,
+                    letter: mapIdxToLetter(idx)
+                }
+            });
+            this.props.submitQuestion({
+                ...this.state,
+                answerChoices: answerChoicesWithLetters
+            });
+        }
     }
 
     render() {
@@ -81,6 +92,7 @@ class NewQuestion extends Component {
                             remove={this.removeAnswer}
                             onChange={this.handleChange}
                             placeholder={`Answer ${mapIdxToLetter(idx)}`}
+                            correctAnswer={this.state.correctAnswer}
                             setCorrectAnswer={this.setCorrectAnswer}
                         />
                 ))}

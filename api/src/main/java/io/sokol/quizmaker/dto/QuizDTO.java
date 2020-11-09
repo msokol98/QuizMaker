@@ -1,0 +1,31 @@
+package io.sokol.quizmaker.dto;
+
+import io.sokol.quizmaker.entity.Person;
+import io.sokol.quizmaker.entity.Question;
+import io.sokol.quizmaker.entity.Quiz;
+
+import java.util.Set;
+import java.util.stream.Collectors;
+
+public class QuizDTO {
+
+    private Quiz quiz;
+
+    public QuizDTO(Quiz quiz) {
+        this.quiz = quiz;
+    }
+
+    public String getTopic() {
+        return quiz.getTopic();
+    }
+
+    public String getCreator() {
+        Person creator = quiz.getCreator();
+        return creator == null ? "null" : creator.getFirstName() + " " + creator.getLastName();
+    }
+
+    public Set<QuestionDTO> getQuestions() {
+        return quiz.getQuestions().stream().map(QuestionDTO::new).collect(Collectors.toSet());
+    }
+
+}

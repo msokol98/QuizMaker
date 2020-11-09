@@ -1,9 +1,12 @@
 import React from 'react';
 import './styles.css';
+import mapIdxToLetter from 'utils/mapIdxToLetter';
 
 const Question = ({ question, number }) => {
 
-    const { prompt, answerChoices } = question;
+    const { prompt, answerChoices, correctAnswer } = question;
+
+    console.log(answerChoices)
 
     return(
         <div className="new-question">
@@ -17,11 +20,20 @@ const Question = ({ question, number }) => {
                 name="prompt" 
             />
             
-            {answerChoices.map((answerChoice, idx) => (
-                <div key={idx}>
-                    <input className="input" value={answerChoice.body} readOnly />
-                </div>
-            ))}
+            {answerChoices && answerChoices.map((answerChoice, idx) => {
+
+                let classes = "input";
+
+                if(answerChoice.letter === correctAnswer)
+                    classes += " correct-answer";
+
+                return(
+                    <div key={idx}>
+                        <input className={classes} value={answerChoice.body} readOnly />
+                    </div>
+                )
+        
+            })}
         </div>
     )
 }

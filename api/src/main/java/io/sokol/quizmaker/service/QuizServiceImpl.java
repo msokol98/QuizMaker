@@ -1,13 +1,19 @@
 package io.sokol.quizmaker.service;
 
 import io.sokol.quizmaker.entity.Answer;
+import io.sokol.quizmaker.entity.Person;
 import io.sokol.quizmaker.entity.Question;
 import io.sokol.quizmaker.entity.Quiz;
+import io.sokol.quizmaker.exception.MissingQuizCreatorException;
+import io.sokol.quizmaker.exception.NoSuchQuizException;
+import io.sokol.quizmaker.repository.PersonRepository;
 import io.sokol.quizmaker.repository.QuizRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.Set;
 
 @Service("quizService")
@@ -16,8 +22,11 @@ public class QuizServiceImpl implements QuizService {
     @Autowired
     private QuizRepository quizRepository;
 
+    @Autowired
+    private PersonRepository personRepository;
+
     @Override
-    public ResponseEntity<?> createQuiz(Quiz quiz) {
+    public ResponseEntity<Long> createQuiz(Quiz quiz, String creatorEmail) throws MissingQuizCreatorException {
         Set<Question> questions = quiz.getQuestions();
 
         questions.forEach(question -> {
@@ -26,7 +35,18 @@ public class QuizServiceImpl implements QuizService {
             question.setQuiz(quiz);
         });
 
+        Optional<Person> optionalCreator = personRepository.findByEmail(creatorEmail);
+        optionalCreator.orElseThrow(MissingQuizCreatorException::new);
+        quiz.setCreator(optionalCreator.get());
+
         quizRepository.save(quiz);
-        return ResponseEntity.ok().build();
+        return new ResponseEntity<>(quiz.getId(), HttpStatus.CREATED);
+    }
+
+    @Override
+    public Quiz getQuizById(long id) throws NoSuchQuizException {
+        Optional<Quiz> optionalQuiz = quizRepository.findById(id);
+        optionalQuiz.orElseThrow(NoSuchQuizException::new);
+        return optionalQuiz.get();
     }
 }

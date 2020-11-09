@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import QuizCreationForm from './quizCreationForm';
-import axios from 'axios';
-import apiHost from 'config';
+import postToServer from 'utils/postToServer';
+import { webHost } from 'config';
 
 const QuizCreationFormContainer = () => {
     
-    const [topic, setTopic] = useState("Politics");
+    const [topic, setTopic] = useState("");
     const [questions, setQuestions] = useState([]);
-    const [addingQuestion, setAddingQuestion] = useState(false);
+    const [addingQuestion, setAddingQuestion] = useState(true);
 
     const addQuestion = () => {
         setAddingQuestion(true);
@@ -18,17 +18,32 @@ const QuizCreationFormContainer = () => {
         setAddingQuestion(false);
     }
 
-    const submitQuiz = () => {
-        axios.post(`${apiHost}/api/quizzes`, {
-            topic, questions
-        }).then(res => {
-            console.log(res);
+    const submitQuiz = event => {
+        event.preventDefault();
+
+        if(!isValid())
+            return;
+
+        postToServer("api/quizzes", { topic, questions }).then(res => {
+            const quizId = res.data;
+            alert(`You and your friends can take the quiz at ${webHost}/quizzes/${quizId}`);
+            window.location = '/portal';
         })
+    }
+
+    const isValid = () => {
+        if(questions.length < /*3*/ 1) {
+            alert("Please provide at least three questions");
+            return false;
+        }
+
+        return true;
     }
 
     return(
         <QuizCreationForm
             topic={topic}
+            setTopic={setTopic}
             questions={questions}
             addingQuestion={addingQuestion}
             addQuestion={addQuestion}

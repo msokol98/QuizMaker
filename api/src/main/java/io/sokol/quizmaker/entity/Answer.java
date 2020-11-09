@@ -16,6 +16,7 @@ public class Answer {
     private Question question;
 
     private String body;
+    private char letter;
 
     public long getId() {
         return id;
@@ -37,12 +38,11 @@ public class Answer {
         this.body = body;
     }
 
-    @Override
-    public String toString() {
-        return "Answer{" +
-                "id=" + id +
-                ", question=" + question +
-                ", body='" + body + '\'' +
-                '}';
+    public char getLetter() {
+        return letter;
+    }
+
+    public void setLetter(char letter) {
+        this.letter = letter;
     }
 }

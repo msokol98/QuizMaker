@@ -1,12 +1,14 @@
 package io.sokol.quizmaker.controller;
 
+import io.sokol.quizmaker.auth.JwtService;
+import io.sokol.quizmaker.dto.QuizDTO;
 import io.sokol.quizmaker.entity.Quiz;
+import io.sokol.quizmaker.exception.MissingQuizCreatorException;
+import io.sokol.quizmaker.exception.NoSuchQuizException;
 import io.sokol.quizmaker.service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class QuizController {
@@ -14,9 +16,18 @@ public class QuizController {
     @Autowired
     private QuizService quizService;
 
+    @Autowired
+    private JwtService jwtService;
+
     @PostMapping("/api/quizzes")
-    public ResponseEntity<?> createQuiz(@RequestBody Quiz quiz) {
-        return quizService.createQuiz(quiz);
+    public ResponseEntity<Long> createQuiz(@RequestBody Quiz quiz, @RequestHeader("Authorization") String authHeader) throws MissingQuizCreatorException {
+        String creatorEmail = jwtService.extractUsername(jwtService.getToken(authHeader));
+        return quizService.createQuiz(quiz, creatorEmail);
+    }
+
+    @GetMapping("/api/quizzes/{id}")
+    public QuizDTO createQuiz(@PathVariable("id") long id) throws NoSuchQuizException {
+        return new QuizDTO(quizService.getQuizById(id));
     }
 
 }

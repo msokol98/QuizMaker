@@ -52,15 +52,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.cors();
-        httpSecurity.csrf().disable()
+    protected void configure(HttpSecurity http) throws Exception {
+        http.cors().and().
+        csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/**").permitAll()
-                .anyRequest().authenticated().and().
-                exceptionHandling().and().sessionManagement()
+                .antMatchers("/register").permitAll()
+                .antMatchers("/authenticate").permitAll()
+                .antMatchers("/api/quizzes").permitAll()
+                .antMatchers("/api/quizzes/**").permitAll()
+                .anyRequest().authenticated().and()
+                .exceptionHandling().and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        httpSecurity.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
     @Bean
