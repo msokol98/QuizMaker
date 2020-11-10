@@ -28,6 +28,11 @@ public class QuizController {
         return quizService.createQuiz(quiz, creatorEmail);
     }
 
+    @GetMapping("/api/quizzes")
+    public Set<QuizDTO> getQuizzes() {
+        return quizService.getQuizzes().stream().map(QuizDTO::new).collect(Collectors.toSet());
+    }
+
     @GetMapping("/api/quizzes/{id}")
     public QuizDTO getQuiz(@PathVariable("id") long id) throws NoSuchQuizException {
         return new QuizDTO(quizService.getQuizById(id));

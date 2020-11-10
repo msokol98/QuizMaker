@@ -37,6 +37,10 @@ const Nav = () => {
                         <a href='/create' className='navbar-item'>
                             Create Quiz
                         </a>
+
+                        <a href='/quizzes' className='navbar-item'>
+                            Take Quizzes
+                        </a>
                 </div>
 
                 <div className='navbar-end'>

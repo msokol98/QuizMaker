@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
@@ -56,5 +57,10 @@ public class QuizServiceImpl implements QuizService {
         optionalCreator.orElseThrow(MissingQuizCreatorException::new);
         Person creator = optionalCreator.get();
         return creator.getCreatedQuizzes();
+    }
+
+    @Override
+    public Set<Quiz> getQuizzes() {
+        return new HashSet(quizRepository.findAll());
     }
 }

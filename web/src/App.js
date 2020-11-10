@@ -13,6 +13,7 @@ import Login from 'components/auth/login';
 import Register from 'components/auth/register';
 import QuizCreationForm from 'components/create/quizCreationFormContainer';
 import Quiz from 'components/quiz/quizContainer';
+import Quizzes from 'components/quizzes/quizzesContainer';
 import Portal from 'components/portal/PortalContainer';
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
                   <Route exact={true} path='/login' component={Login} />
                   <Route exact={true} path='/register' component={Register} />
                   <Route exact={true} path='/portal' component={Portal} />
+                  <Route path='/quizzes' exact={true} component={Quizzes}/>
                   <Route path='/quizzes/:quizId' exact={true} component={Quiz}/>
                   <Route component={NoMatchPage} />
               </Switch>
