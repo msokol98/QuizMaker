@@ -1,2 +1,2 @@
-export const apiHost = process.env.NODE_ENV === "development" ? "http://localhost:8080" : "http://10.0.0.4:8080";
-export const webHost = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "http://10.0.0.4";
+export const apiHost = process.env.NODE_ENV === "development" ? "http://localhost:8080" : "3.136.106.200:8080";
+export const webHost = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "3.136.106.200";
