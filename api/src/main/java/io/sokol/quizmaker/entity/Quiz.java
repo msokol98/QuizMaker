@@ -1,6 +1,9 @@
 package io.sokol.quizmaker.entity;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
@@ -9,6 +12,9 @@ public class Quiz {
     @Id
     @GeneratedValue
     private long id;
+
+    @CreationTimestamp
+    private LocalDateTime creationTimestamp;
 
     @ManyToOne
     private Person creator;
@@ -60,5 +66,13 @@ public class Quiz {
 
     public void setQuestions(Set<Question> questions) {
         this.questions = questions;
+    }
+
+    public LocalDateTime getCreationTimestamp() {
+        return creationTimestamp;
+    }
+
+    public void setCreationTimestamp(LocalDateTime creationTimestamp) {
+        this.creationTimestamp = creationTimestamp;
     }
 }

@@ -49,4 +49,12 @@ public class QuizServiceImpl implements QuizService {
         optionalQuiz.orElseThrow(NoSuchQuizException::new);
         return optionalQuiz.get();
     }
+
+    @Override
+    public Set<Quiz> getQuizzesCreated(String creatorEmail) throws MissingQuizCreatorException {
+        Optional<Person> optionalCreator = personRepository.findByEmail(creatorEmail);
+        optionalCreator.orElseThrow(MissingQuizCreatorException::new);
+        Person creator = optionalCreator.get();
+        return creator.getCreatedQuizzes();
+    }
 }

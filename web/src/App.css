@@ -130,6 +130,10 @@ html, body {
   background-color: red !important;
 }
 
+.checkmark {
+  margin: 15px 0 0 0 !important;
+}
+
 @media screen and (max-width: 768px) {
 
   .navbar-wrapper {

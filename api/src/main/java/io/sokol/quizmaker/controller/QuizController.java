@@ -10,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Set;
+import java.util.stream.Collectors;
+
 @RestController
 public class QuizController {
 
@@ -26,8 +29,13 @@ public class QuizController {
     }
 
     @GetMapping("/api/quizzes/{id}")
-    public QuizDTO createQuiz(@PathVariable("id") long id) throws NoSuchQuizException {
+    public QuizDTO getQuiz(@PathVariable("id") long id) throws NoSuchQuizException {
         return new QuizDTO(quizService.getQuizById(id));
     }
 
+    @GetMapping("/api/quizzes/created")
+    public Set<QuizDTO> getQuizzesCreated(@RequestHeader("Authorization") String authHeader) throws MissingQuizCreatorException {
+        String creatorEmail = jwtService.extractUsername(jwtService.getToken(authHeader));
+        return quizService.getQuizzesCreated(creatorEmail).stream().map(QuizDTO::new).collect(Collectors.toSet());
+    }
 }

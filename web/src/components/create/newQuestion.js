@@ -73,7 +73,9 @@ class NewQuestion extends Component {
 
                 <h4>Question {this.props.number}</h4>
 
-                <p className="has-text-grey">Click radio button to denote the correct answer...</p>
+                <br />
+
+                <p className="has-text-grey is-marginless is-paddingless">Question Prompt</p>
 
                 <input 
                     className="new-question-prompt input" 
@@ -83,6 +85,11 @@ class NewQuestion extends Component {
                     name="prompt" 
                     onChange={e => this.handleChange(e)}
                 />
+
+                <br /><br />
+
+                <p className="has-text-grey">Click radio button to denote the correct answer...</p>
+
                 
                 {answerChoices.map((answerChoice, idx) => (
 

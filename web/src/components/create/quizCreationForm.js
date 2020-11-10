@@ -5,7 +5,7 @@ import './styles.css';
 
 const QuizCreationForm = ({ topic, setTopic, questions, submitQuestion, addQuestion, addingQuestion, submitQuiz }) => (
     
-    <div className="quiz-creation-form">
+    <div className="quiz-creation-form container">
 
         <h4 className="has-text-weight-light">Topic</h4>
         
