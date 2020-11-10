@@ -7,9 +7,7 @@ const QuizzesContainer = () => {
     const [quizzes, setQuizzes] = useState([]);
 
     const getQuizzes = () => {
-        axios.get(`${apiHost}/api/quizzes/created`, {
-            headers: { 'Authorization': `Bearer ${localStorage.getItem('jwt')}` }
-        }).then(res => {
+        axios.get(`${apiHost}/api/quizzes`).then(res => {
             setQuizzes(res.data)
         })
     }
