@@ -66,8 +66,10 @@ class FormTemplate extends Component {
                             />
                         </div>
                     ))}
-        
+                    <br />
+
                     {validationError && <Alert variant="danger">{this.props.validationErrorMessage}</Alert>}
+                    {this.props.error && <Alert variant="danger">{this.props.serverErrorMessage}</Alert>}
 
                     <br />
 

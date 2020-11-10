@@ -6,7 +6,7 @@ import { webHost } from 'config';
 const QuizCreationFormContainer = () => {
     
     const [topic, setTopic] = useState("");
-    const [questions, setQuestions] = useState([]);
+    const [questions] = useState([]);
     const [addingQuestion, setAddingQuestion] = useState(true);
 
     const addQuestion = () => {

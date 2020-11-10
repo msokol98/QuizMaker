@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import FormTemplate from './form';
 import { apiHost } from 'config';
 import axios from 'axios';
@@ -14,7 +14,9 @@ const LoginForm = () => {
             const jwt = response.data.jwt;
             localStorage.setItem('jwt', jwt);
             window.location = '/portal';
-        });
+        }).catch(() => {
+            setError(true);
+        })
     };
 
     const fields =  {
@@ -22,11 +24,15 @@ const LoginForm = () => {
         password: { displayName: "Password", type: "password", value: "" }
     };
 
+    const [error, setError] = useState(false);
+
     return (
         <FormTemplate 
             fields={fields} 
             submit={login}  
             header="Sign In"
+            serverErrorMessage="Wrong username or password"
+            error={error}
         />
     )
 

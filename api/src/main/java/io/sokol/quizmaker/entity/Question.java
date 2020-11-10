@@ -15,6 +15,7 @@ public class Question {
     private Quiz quiz;
 
     private String prompt;
+    private int number;
     private char correctAnswer;
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
@@ -54,5 +55,13 @@ public class Question {
 
     public void setCorrectAnswer(char correctAnswer) {
         this.correctAnswer = correctAnswer;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
     }
 }

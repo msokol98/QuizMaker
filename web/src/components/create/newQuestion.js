@@ -58,7 +58,8 @@ class NewQuestion extends Component {
             });
             this.props.submitQuestion({
                 ...this.state,
-                answerChoices: answerChoicesWithLetters
+                answerChoices: answerChoicesWithLetters,
+                number: this.props.number
             });
         }
     }

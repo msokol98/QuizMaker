@@ -1,6 +1,5 @@
 package io.sokol.quizmaker.dto;
 
-import io.sokol.quizmaker.entity.Answer;
 import io.sokol.quizmaker.entity.Question;
 
 import java.util.Set;
@@ -13,6 +12,12 @@ public class QuestionDTO {
     public QuestionDTO(Question question) {
         this.question = question;
     }
+
+    public long getId() {
+        return question.getId();
+    }
+
+    public int getNumber() { return question.getNumber(); }
 
     public String getPrompt() {
         return question.getPrompt();

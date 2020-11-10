@@ -34,9 +34,10 @@ const Landing = () => (
             <div className='columns is-variable is-7'>
               <div className='column'>
                 <div className='notification has-background-white bordered'>
-                  <div className='home-icon-wrapper'>
-                    <img src='money.png' alt='money' width='75'/>
-                  </div>                  
+
+                  <p className='image is-96x96 landing-icon-96'>
+                    <img src='money.png' alt='person' />
+                  </p>              
                   <h3 className='title has-text-weight-light'>Free</h3>
                   <h5 className='subtitle has-text-grey has-text-weight-light'>We'll keep your wallet happy.</h5>
                   <p>
@@ -48,9 +49,9 @@ const Landing = () => (
 
               <div className='column'>
               <div className='notification has-background-white bordered'>
-                  <div className='home-icon-wrapper'>
-                    <img src='clock.webp' alt='clock' width='75'/>
-                  </div>
+                  <p className='image is-96x96 landing-icon-96'>
+                    <img src='clock.webp' alt='person'/>
+                  </p>  
                   <h3 className='title has-text-weight-light'>Quick Service</h3>
                   <h5 className='subtitle has-text-grey has-text-weight-light'>Creating a quiz is easy.</h5>
                   <p>
@@ -62,9 +63,9 @@ const Landing = () => (
 
               <div className='column'>
               <div className='notification has-background-white bordered'>
-                  <div className='home-icon-wrapper'>
-                    <img src='honesty.png' alt='honesty' width='75'/>
-                  </div>                  
+                  <p className='image is-96x96 landing-icon-96'>
+                    <img src='honesty.png' alt='person' />
+                  </p>                 
                   <h3 className='title has-text-weight-light'>Honest Work</h3>
                   <h5 className='subtitle has-text-grey has-text-weight-light'>Open-source is the way to go.</h5>
                   <p>

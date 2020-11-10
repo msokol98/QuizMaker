@@ -12,7 +12,7 @@ import NoMatchPage from 'components/nomatch';
 import Login from 'components/auth/login';
 import Register from 'components/auth/register';
 import QuizCreationForm from 'components/create/quizCreationFormContainer';
-import Quiz from 'components/quiz/QuizContainer';
+import Quiz from 'components/quiz/quizContainer';
 
 function App() {
   return (

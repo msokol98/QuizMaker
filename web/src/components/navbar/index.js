@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import 'bulma/css/bulma.css'
 import 'bulma-divider/dist/css/bulma-divider.min.css';
+import icon from 'assets/icon.webp';
 
 const Nav = () => {
 
@@ -18,9 +19,9 @@ const Nav = () => {
                 <div className='navbar-brand navbar-brand-custom' onClick={() => window.location.pathname='/'} >
 
                     <div className='navbar-brand-inner'>
-                        <img src='icon.webp' alt='logo' width='35px' />
+                        <img src={icon} alt='logo' width='35px' />
                         <h5 className='subtitle has-text-weight-normal' style={{margin: '0 10px'}}>Sokol Quiz Maker</h5>
-                        <img src='icon.webp' alt='logo' width='35px' />
+                        <img src={icon} alt='logo' width='35px' />
                     </div>
 
                     <a href='/'role='button' className='navbar-burger burger' aria-label='menu' aria-expanded='false' data-target='navbarBasicExample'>

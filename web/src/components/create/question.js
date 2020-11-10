@@ -1,12 +1,9 @@
 import React from 'react';
 import './styles.css';
-import mapIdxToLetter from 'utils/mapIdxToLetter';
 
 const Question = ({ question, number }) => {
 
     const { prompt, answerChoices, correctAnswer } = question;
-
-    console.log(answerChoices)
 
     return(
         <div className="new-question">
