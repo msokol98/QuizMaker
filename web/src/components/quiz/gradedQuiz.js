@@ -21,6 +21,10 @@ const GradedQuiz = ({ quiz, givenAnswers, retake }) => {
         <div className="container" style={{padding: "3% 0", maxWidth: "600px"}}>
             <div className={classes}>{gradeMessage}<br/>{secondaryMessage}</div>
 
+            <button onClick={() => window.location = "/create"} className="button with-space-on-right">Create a Quiz</button>
+            <button onClick={() => window.location = "/quizzes"} className="button">See Other Quizzes</button>
+            <br /><br />
+
             <h3>Quiz on <strong>{topic}</strong> by {creator}</h3>
 
             {questions && questions.map((question, idx) => {

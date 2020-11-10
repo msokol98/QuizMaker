@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -29,8 +30,8 @@ public class QuizController {
     }
 
     @GetMapping("/api/quizzes")
-    public Set<QuizDTO> getQuizzes() {
-        return quizService.getQuizzes().stream().map(QuizDTO::new).collect(Collectors.toSet());
+    public List<QuizDTO> getQuizzes() {
+        return quizService.getQuizzes().stream().map(QuizDTO::new).collect(Collectors.toList());
     }
 
     @GetMapping("/api/quizzes/{id}")

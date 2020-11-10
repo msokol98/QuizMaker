@@ -15,7 +15,8 @@ const Landing = () => (
                 <h6 className='subtitle has-text-white'>
                     Make fun quizzes for your friends to take.
                 </h6>
-                <button onClick={() => window.location = "/create"} className="button">Create Quiz</button>
+                <button onClick={() => window.location = "/create"} className="button with-space-on-right">Create Quiz</button>
+                <button onClick={() => window.location = "/quizzes"} className="button">Take Quizzes</button>
               </div>
                 <br />
                 <div className='banner-image'>

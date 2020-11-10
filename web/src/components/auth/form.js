@@ -71,9 +71,9 @@ class FormTemplate extends Component {
                     {validationError && <Alert variant="danger">{this.props.validationErrorMessage}</Alert>}
                     {this.props.error && <Alert variant="danger">{this.props.serverErrorMessage}</Alert>}
 
-                    <br />
-
                     <button className="button is-info is-fullwidth" type="submit">Submit</button>
+                    
+                    {this.props.extraJsx && this.props.extraJsx}    
                 </form>
             </div>
         );

@@ -13,9 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service("quizService")
 public class QuizServiceImpl implements QuizService {
@@ -60,7 +59,7 @@ public class QuizServiceImpl implements QuizService {
     }
 
     @Override
-    public Set<Quiz> getQuizzes() {
-        return new HashSet(quizRepository.findAll());
+    public List<Quiz> getQuizzes() {
+        return quizRepository.findAll().stream().sorted(Comparator.comparing(Quiz::getCreationTimestamp)).collect(Collectors.toList());
     }
 }

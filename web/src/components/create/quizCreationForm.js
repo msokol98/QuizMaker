@@ -2,6 +2,7 @@ import React from 'react';
 import Question from './question';
 import NewQuestion from './newQuestion';
 import './styles.css';
+import autoGenerateQuiz from 'utils/autoGen';
 
 const QuizCreationForm = ({ topic, setTopic, questions, submitQuestion, addQuestion, addingQuestion, submitQuiz }) => (
     
@@ -28,6 +29,12 @@ const QuizCreationForm = ({ topic, setTopic, questions, submitQuestion, addQuest
                 <button className="button is-info" onClick={submitQuiz}>Create Quiz</button>
             </div>
         }
+
+
+        <div class="notification is-info is-light">
+            <p>Don't want to write the questions? We can make a quiz for you.</p>
+            <button onClick={autoGenerateQuiz} className="button">Auto-generate a quiz</button>
+        </div>
     </div>
 
 );

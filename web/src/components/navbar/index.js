@@ -6,6 +6,7 @@ import icon from 'assets/icon.webp';
 const Nav = () => {
 
     const [jwt, setJwt] = useState(localStorage.getItem('jwt'));
+    const [active, setActive] = useState(false);
 
     const logout = () => {
         localStorage.removeItem('jwt');
@@ -13,18 +14,26 @@ const Nav = () => {
         window.location = '/';  
     };
 
+    let menuClasses = 'navbar-menu';
+    let burgerClasses = 'navbar-burger burger';
+
+    if(active) {
+        menuClasses += ' is-active';
+        burgerClasses += ' is-active';
+    }
+
     return (
         <div className='navbar-wrapper navbar-wrapper-custom'>  
             <nav className='navbar ' role='navigation' aria-label='main navigation'>
-                <div className='navbar-brand navbar-brand-custom' onClick={() => window.location.pathname='/'} >
+                <div className='navbar-brand navbar-brand-custom' >
 
-                    <div className='navbar-brand-inner'>
+                    <div className='navbar-brand-inner' onClick={() => window.location.pathname='/'} >
                         <img src={icon} alt='logo' width='35px' />
                         <h5 className='subtitle has-text-weight-normal' style={{margin: '0 10px'}}>Sokol Quiz Maker</h5>
                         <img src={icon} alt='logo' width='35px' />
                     </div>
 
-                    <a href='/'role='button' className='navbar-burger burger' aria-label='menu' aria-expanded='false' data-target='navbarBasicExample'>
+                    <a onClick={() => setActive(!active)} role='button' className={burgerClasses} aria-label='menu' aria-expanded='false' data-target='navbarBasicExample'>
                         <span aria-hidden='true'></span>
                         <span aria-hidden='true'></span>
                         <span aria-hidden='true'></span>
@@ -32,7 +41,7 @@ const Nav = () => {
                 </div>
 
                 
-                <div id='navbarBasicExample' className='navbar-menu' style={{marginLeft: '5px'}}>
+                <div id='navbarBasicExample' className={menuClasses} style={{marginLeft: '5px'}}>
                     <div className='navbar-start'>
                         <a href='/create' className='navbar-item'>
                             Create Quiz

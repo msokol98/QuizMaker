@@ -33,6 +33,7 @@ const LoginForm = () => {
             header="Sign In"
             serverErrorMessage="Wrong username or password"
             error={error}
+            extraJsx={<p style={{margin: "20px 0 0 0", padding: "0", textAlign: "center"}}>Don't have an account? <a href="/register"> Sign Up</a></p>}
         />
     )
 
