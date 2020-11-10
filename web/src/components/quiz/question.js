@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import 'components/create/styles.css';
 import './styles.css';
 import mapIdxToLetter from 'utils/mapIdxToLetter';
+import createMarkup from 'utils/createMarkup';
 
 const Question = ({ question, number, setAnswer }) => {
 
@@ -17,7 +18,7 @@ const Question = ({ question, number, setAnswer }) => {
         <div className="new-question">
             <h4>Question {number}</h4>
 
-            <h6 className="quiz-question-prompt">{prompt}</h6>
+            <h6 className="quiz-question-prompt" dangerouslySetInnerHTML={createMarkup(prompt)}  />
 
             {answerChoices && answerChoices.map((answerChoice, idx) => {
 
@@ -31,9 +32,7 @@ const Question = ({ question, number, setAnswer }) => {
                     <div key={idx} className="quiz-question-answer">
                         <input type="radio" onClick={() => fixAnswer(idx)} name={`question ${id}`}/>
 
-                        <div className={classes}>
-                            {answerChoice.body}
-                        </div>
+                        <div className={classes} dangerouslySetInnerHTML={createMarkup(answerChoice.body)} />
                     </div>
                 )
         
@@ -41,5 +40,7 @@ const Question = ({ question, number, setAnswer }) => {
         </div>
     )
 }
+
+
  
 export default Question;

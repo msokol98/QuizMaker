@@ -16,6 +16,8 @@ import Quiz from 'components/quiz/quizContainer';
 import Quizzes from 'components/quizzes/quizzesContainer';
 import Portal from 'components/portal/PortalContainer';
 
+import Temp from 'components/temp';
+
 function App() {
   return (
       <>
@@ -31,7 +33,12 @@ function App() {
                   <Route exact={true} path='/portal' component={Portal} />
                   <Route path='/quizzes' exact={true} component={Quizzes}/>
                   <Route path='/quizzes/:quizId' exact={true} component={Quiz}/>
+
+                  {/* <Route exact={true} path='/temp' component={Temp} /> */}
+
                   <Route component={NoMatchPage} />
+
+
               </Switch>
           </Router>   
 

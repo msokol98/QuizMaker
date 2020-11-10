@@ -1,6 +1,7 @@
 import React from 'react';
 import 'components/create/styles.css';
 import './styles.css';
+import createMarkup from 'utils/createMarkup';
 
 const GradedQuestion = ({ question, number, chosenAnswer }) => {
 
@@ -10,7 +11,7 @@ const GradedQuestion = ({ question, number, chosenAnswer }) => {
         <div className="new-question">
             <h4>Question {number}</h4>
 
-            <h6 className="quiz-question-prompt">{prompt}</h6>
+            <h6 className="quiz-question-prompt" dangerouslySetInnerHTML={createMarkup(prompt)}  />
 
             {answerChoices && answerChoices.map((answerChoice, idx) => {
 
@@ -25,9 +26,7 @@ const GradedQuestion = ({ question, number, chosenAnswer }) => {
                 
                 return(
                     <div key={idx} className="quiz-question-answer">
-                        <div className={classes}>
-                            {answerChoice.body}
-                        </div>
+                        <div className={classes} dangerouslySetInnerHTML={createMarkup(answerChoice.body)} />
                     </div>
                 )
         

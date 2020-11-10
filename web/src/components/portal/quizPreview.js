@@ -6,11 +6,13 @@ const QuizPreview = ({ url, quiz, showCreator }) => {
 
     const [copied, setCopied] = useState(false);
 
-    const header = showCreator ? `A quiz on ${quiz.topic} created by ${quiz.creator}` : `A quiz on ${quiz.topic} created on ${quiz.creationDate}`;
+    const topic = <strong>{quiz.topic}</strong> ;
+    const header = showCreator ? <h6 className="has-text-weight-normal">A quiz on {topic} created by {quiz.creator}</h6> : 
+                                <h6 className="has-text-weight-normal">A quiz on {topic} created on {quiz.creationDate}</h6>;
 
     return(
         <div className="box content" style={{maxWidth: "550px"}}>
-            <h6 className="has-text-weight-normal">{header}</h6>
+            {header}
             <h6 className="has-text-weight-normal">You and your friends can take it at: <a href={url}>{url}</a></h6>
 
             <CopyToClipboard text={url}

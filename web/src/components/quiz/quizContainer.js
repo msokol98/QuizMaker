@@ -16,7 +16,7 @@ const QuizContainer = props => {
             const quiz = res.data;
             quiz.questions = orderQuestions(quiz.questions);
             setQuiz(quiz);
-        });
+        }).catch(() => window.location = "/404")
     }
 
     useEffect(fetchQuiz, [quizId]);
@@ -30,8 +30,14 @@ const QuizContainer = props => {
     const checkAnswers = () => {
         if(Object.keys(givenAnswers).length !== quiz.questions.length)
             alert("Please answer every question.");
-        else
+        else {
             setSubmitted(true);
+            window.scroll({
+                top: 0, 
+                left: 0, 
+                behavior: 'smooth'
+              });
+        }
     }
 
     if(submitted)
