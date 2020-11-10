@@ -1,7 +1,6 @@
 import React from 'react';
 import 'components/create/styles.css';
 import './styles.css';
-import mapIdxToLetter from 'utils/mapIdxToLetter';
 
 const GradedQuestion = ({ question, number, chosenAnswer }) => {
 

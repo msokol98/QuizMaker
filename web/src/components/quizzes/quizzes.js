@@ -10,7 +10,7 @@ const Quizzes = ({ quizzes }) => {
             {quizzes && quizzes.map((quiz, idx) => {
                 const url = `${webHost}/quizzes/${quiz.id}`;
 
-                return <QuizPreview key={idx} url={url} quiz={quiz} />
+                return <QuizPreview key={idx} url={url} quiz={quiz} showCreator={true} />
             })}
 
             <button onClick={() => window.location = "/create"} style={{marginTop: "10px"}} className="button is-info">Create a Quiz</button>
