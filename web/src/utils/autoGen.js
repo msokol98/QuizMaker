@@ -48,7 +48,6 @@ const fetchQuiz = (categoryName, categoryId) => {
 
         postToServer("api/quizzes", submissionQuiz).then(res => {
             const quizId = res.data;
-            alert("Your quiz has been made.")
             window.location = `/quizzes/${quizId}`;
         })
         
