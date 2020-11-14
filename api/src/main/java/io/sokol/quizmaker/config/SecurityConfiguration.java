@@ -60,10 +60,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/authenticate").permitAll()
                 .antMatchers("/api/quizzes").permitAll()
                 .antMatchers("/api/quizzes/**").permitAll()
-
-                // temporary
-                .antMatchers("/**").permitAll()
-
                 .anyRequest().authenticated().and()
                 .exceptionHandling().and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
