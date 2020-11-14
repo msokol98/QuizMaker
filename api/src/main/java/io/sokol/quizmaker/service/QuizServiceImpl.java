@@ -27,12 +27,6 @@ public class QuizServiceImpl implements QuizService {
     @Autowired
     private PersonRepository personRepository;
 
-    @Autowired
-    private QuestionRepository questionRepository;
-
-    @Autowired
-    private AnswerRepository answerRepository;
-
     @Override
     public ResponseEntity<Long> createQuiz(Quiz quiz, String creatorEmail) throws MissingQuizCreatorException {
         Set<Question> questions = quiz.getQuestions();
@@ -72,6 +66,11 @@ public class QuizServiceImpl implements QuizService {
     }
 
     @Override
+    public List<Quiz> getQuizzes(String topic) {
+        return getQuizzes().stream().filter(quiz -> quiz.getTopic().equals(topic)).collect(Collectors.toList());
+    }
+
+    @Override
     public ResponseEntity<?> patchQuiz(long quizId, Quiz updatedQuiz, String creatorEmail) throws MissingQuizCreatorException, NoSuchQuizException {
         Optional<Quiz> optionalQuiz = quizRepository.findById(quizId);
         optionalQuiz.orElseThrow(NoSuchQuizException::new);
@@ -86,8 +85,7 @@ public class QuizServiceImpl implements QuizService {
 
         Set<Question> updatedQuestions = updatedQuiz.getQuestions();
 
-        updatedQuestions.stream()
-                // .filter(question -> question.getId() == null)
+        updatedQuestions
                 .forEach(question -> {
                     question.setQuiz(originalQuiz);
                     question.getAnswerChoices().forEach(answer -> answer.setQuestion(question));

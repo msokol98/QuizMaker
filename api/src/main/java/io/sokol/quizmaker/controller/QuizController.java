@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -30,8 +31,9 @@ public class QuizController {
     }
 
     @GetMapping("/api/quizzes")
-    public List<QuizDTO> getQuizzes() {
-        return quizService.getQuizzes().stream().map(QuizDTO::new).collect(Collectors.toList());
+    public List<QuizDTO> getQuizzes(@RequestParam(required = false) String topic) {
+        List<Quiz> quizzes = topic == null ? quizService.getQuizzes() : quizService.getQuizzes(topic);
+        return quizzes.stream().map(QuizDTO::new).collect(Collectors.toList());
     }
 
     @GetMapping("/api/quizzes/{id}")

@@ -57,6 +57,11 @@ const QuizCreationFormContainer = () => {
             return false;
         }
 
+        if(!topic || topic === "") {
+            alert("Please select a topic.");
+            return false;
+        }
+
         return true;
     }
 
