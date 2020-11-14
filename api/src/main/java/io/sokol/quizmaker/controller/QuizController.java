@@ -39,6 +39,14 @@ public class QuizController {
         return new QuizDTO(quizService.getQuizById(id));
     }
 
+    @PatchMapping("/api/quizzes/{id}")
+    public ResponseEntity<?> patchQuiz(@PathVariable("id") long id, @RequestBody Quiz quiz, @RequestHeader("Authorization") String authHeader)
+            throws MissingQuizCreatorException, NoSuchQuizException {
+
+        String creatorEmail = jwtService.extractUsername(jwtService.getToken(authHeader));
+        return quizService.patchQuiz(id, quiz, creatorEmail);
+    }
+
     @GetMapping("/api/quizzes/created")
     public Set<QuizDTO> getQuizzesCreated(@RequestHeader("Authorization") String authHeader) throws MissingQuizCreatorException {
         String creatorEmail = jwtService.extractUsername(jwtService.getToken(authHeader));

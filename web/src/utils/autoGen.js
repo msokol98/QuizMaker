@@ -1,7 +1,6 @@
 import axios from 'axios';
 import mapIdxToLetter from 'utils/mapIdxToLetter';
 import postToServer from 'utils/postToServer';
-import { webHost } from 'config';
 
 const autoGenerateQuiz = () => {
     axios.get("https://opentdb.com/api_category.php").then(res => {
@@ -18,6 +17,9 @@ const fetchQuiz = (categoryName, categoryId) => {
 
     axios.get(url).then(res => {
         const quiz = res.data.results;
+
+        if(!quiz || quiz.length === 0)
+            return autoGenerateQuiz();
         
         const questions = quiz.map((question, questionNumber) => {
             let answers = [...question.incorrect_answers, question.correct_answer];

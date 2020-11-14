@@ -9,7 +9,7 @@ public class Question {
 
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
 
     @ManyToOne
     private Quiz quiz;
@@ -21,7 +21,7 @@ public class Question {
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
     private Set<Answer> answerChoices;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

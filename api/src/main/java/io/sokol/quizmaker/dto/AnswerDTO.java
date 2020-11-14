@@ -17,4 +17,6 @@ public class AnswerDTO {
     public char getLetter() {
         return answer.getLetter();
     }
+
+    public long getId() { return answer.getId(); }
 }

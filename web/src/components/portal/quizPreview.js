@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { Checkmark } from 'react-checkmark'
 
-const QuizPreview = ({ url, quiz, showCreator }) => {
+const QuizPreview = ({ url, quiz, showCreator, deleteQuiz, addQuestions }) => {
 
     const [copied, setCopied] = useState(false);
 
@@ -17,8 +17,14 @@ const QuizPreview = ({ url, quiz, showCreator }) => {
 
             <CopyToClipboard text={url}
                 onCopy={() => setCopied(true)}>
-                <button className="button is-light">Copy Link to Clipboard</button>
+                <button className="button is-light with-space-on-right">Copy Link to Clipboard</button>
             </CopyToClipboard>
+
+            <div>
+                <br />
+                {addQuestions && <button onClick={() => addQuestions(quiz)} className="button is-info with-space-on-right">Add More Questions</button>}
+                {deleteQuiz && <button onClick={() => deleteQuiz(quiz)} className="button is-danger">Delete Quiz</button>}
+            </div>
 
             {copied && 
                 <Checkmark size={40} />

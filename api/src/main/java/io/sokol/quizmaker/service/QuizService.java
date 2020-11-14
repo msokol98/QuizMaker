@@ -13,4 +13,5 @@ public interface QuizService {
     Quiz getQuizById(long id) throws NoSuchQuizException;
     Set<Quiz> getQuizzesCreated(String creatorEmail) throws MissingQuizCreatorException;
     List<Quiz> getQuizzes();
+    ResponseEntity<?> patchQuiz(long quizId, Quiz updatedQuiz, String creatorEmail) throws MissingQuizCreatorException, NoSuchQuizException;
 }

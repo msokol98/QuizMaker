@@ -6,7 +6,9 @@ import io.sokol.quizmaker.entity.Question;
 import io.sokol.quizmaker.entity.Quiz;
 import io.sokol.quizmaker.exception.MissingQuizCreatorException;
 import io.sokol.quizmaker.exception.NoSuchQuizException;
+import io.sokol.quizmaker.repository.AnswerRepository;
 import io.sokol.quizmaker.repository.PersonRepository;
+import io.sokol.quizmaker.repository.QuestionRepository;
 import io.sokol.quizmaker.repository.QuizRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,6 +26,12 @@ public class QuizServiceImpl implements QuizService {
 
     @Autowired
     private PersonRepository personRepository;
+
+    @Autowired
+    private QuestionRepository questionRepository;
+
+    @Autowired
+    private AnswerRepository answerRepository;
 
     @Override
     public ResponseEntity<Long> createQuiz(Quiz quiz, String creatorEmail) throws MissingQuizCreatorException {
@@ -61,5 +69,34 @@ public class QuizServiceImpl implements QuizService {
     @Override
     public List<Quiz> getQuizzes() {
         return quizRepository.findAll().stream().sorted(Comparator.comparing(Quiz::getCreationTimestamp)).collect(Collectors.toList());
+    }
+
+    @Override
+    public ResponseEntity<?> patchQuiz(long quizId, Quiz updatedQuiz, String creatorEmail) throws MissingQuizCreatorException, NoSuchQuizException {
+        Optional<Quiz> optionalQuiz = quizRepository.findById(quizId);
+        optionalQuiz.orElseThrow(NoSuchQuizException::new);
+        Optional<Person> optionalCreator = personRepository.findByEmail(creatorEmail);
+        optionalCreator.orElseThrow(MissingQuizCreatorException::new);
+
+        Quiz originalQuiz = optionalQuiz.get();
+        Person creator = optionalCreator.get();
+
+        if(originalQuiz.getCreator().getId() != creator.getId())
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+
+        Set<Question> updatedQuestions = updatedQuiz.getQuestions();
+
+        updatedQuestions.stream()
+                // .filter(question -> question.getId() == null)
+                .forEach(question -> {
+                    question.setQuiz(originalQuiz);
+                    question.getAnswerChoices().forEach(answer -> answer.setQuestion(question));
+                });
+
+        originalQuiz.setTopic(updatedQuiz.getTopic());
+        originalQuiz.setQuestions(updatedQuestions);
+
+        quizRepository.save(originalQuiz);
+        return new ResponseEntity<>(quizId, HttpStatus.ACCEPTED);
     }
 }

@@ -1,37 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { apiHost } from 'config.js';
-import './styles.css';
-import { webHost } from 'config';
-import QuizPreview from './quizPreview';
+import Portal from './Portal';
 
 const PortalContainer = () => {
 
-    const [createdQuizzes, setCreatedQuizzes] = useState([]);
+    const [createdQuizzes, setCreatedQuizzes] = useState([]), jwt = localStorage.getItem('jwt');
 
     const getUsersQuizzes = () => {
         axios.get(`${apiHost}/api/quizzes/created`, {
-            headers: { 'Authorization': `Bearer ${localStorage.getItem('jwt')}` }
+            headers: { 'Authorization': `Bearer ${jwt}` }
         }).then(res => {
             setCreatedQuizzes(res.data)
         })
     }
 
-    useEffect(getUsersQuizzes, []);
+    useEffect(getUsersQuizzes, [jwt]);
 
-    return(
-        <div className="container portal">  
-            <h3 className="title has-text-weight-light">Here our a list of quizzes you have made...</h3>
+    const deleteQuiz = quiz => {
 
-            {createdQuizzes && createdQuizzes.map((quiz, idx) => {
-                const url = `${webHost}/quizzes/${quiz.id}`;
+        const id = quiz.id;
 
-                return <QuizPreview key={idx} url={url} quiz={quiz} />
-            })}
+        axios.delete(`${apiHost}/quizzes/${id}`).then(() => {
+            const updatedQuizzes = createdQuizzes.filter(quiz => quiz.id !== id);
+            setCreatedQuizzes(updatedQuizzes);
+        })
+    }
 
-            <button onClick={() => window.location = "/create"} style={{marginTop: "10px"}} className="button is-info">Create New Quiz</button>
-        </div>
-    )
+    const addQuestions = quiz => {
+        window.location = `/create?quizId=${quiz.id}`
+    }
+    
+    return <Portal createdQuizzes={createdQuizzes} deleteQuiz={deleteQuiz} addQuestions={addQuestions} />
 
 }
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import './styles.css';
+import createMarkup from 'utils/createMarkup';  
 
 const Question = ({ question, number }) => {
 
@@ -9,13 +10,7 @@ const Question = ({ question, number }) => {
         <div className="new-question">
             <h4>Question {number}</h4>
 
-            <input 
-                readOnly
-                className="new-question-prompt input" 
-                type="text" 
-                value={prompt}
-                name="prompt" 
-            />
+            <div className="new-question-prompt input" dangerouslySetInnerHTML={createMarkup(prompt)} />
             
             {answerChoices && answerChoices.map((answerChoice, idx) => {
 
@@ -24,11 +19,8 @@ const Question = ({ question, number }) => {
                 if(answerChoice.letter === correctAnswer)
                     classes += " correct-answer";
 
-                return(
-                    <div key={idx}>
-                        <input className={classes} value={answerChoice.body} readOnly />
-                    </div>
-                )
+                return <div key={idx} className={classes} dangerouslySetInnerHTML={createMarkup(answerChoice.body)} />
+                
         
             })}
         </div>
