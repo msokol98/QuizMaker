@@ -21,7 +21,9 @@ const PortalContainer = () => {
 
         const id = quiz.id;
 
-        axios.delete(`${apiHost}/quizzes/${id}`).then(() => {
+        axios.delete(`${apiHost}/quizzes/${id}`, {
+            headers: { 'Authorization': `Bearer ${localStorage.getItem('jwt')}` }
+        }).then(() => {
             const updatedQuizzes = createdQuizzes.filter(quiz => quiz.id !== id);
             setCreatedQuizzes(updatedQuizzes);
         })
