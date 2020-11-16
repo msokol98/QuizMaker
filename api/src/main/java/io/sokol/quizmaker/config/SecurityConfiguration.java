@@ -58,8 +58,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/register").permitAll()
                 .antMatchers("/authenticate").permitAll()
-                .antMatchers("/api/quizzes").permitAll()
-                .antMatchers("/api/quizzes/**").permitAll()
+                // .antMatchers("/api/quizzes").permitAll()
+                // .antMatchers("/api/quizzes/**").permitAll()
                 .anyRequest().authenticated().and()
                 .exceptionHandling().and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
