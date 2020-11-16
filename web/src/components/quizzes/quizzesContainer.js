@@ -8,9 +8,7 @@ const QuizzesContainer = () => {
     const [quizzes, setQuizzes] = useState([]);
 
     const getQuizzes = params => {
-        const config = {
-            headers: { 'Authorization': `Bearer ${localStorage.getItem('jwt')}` },
-        }
+        const config = {}
 
         if(params)
             config.params = params;
