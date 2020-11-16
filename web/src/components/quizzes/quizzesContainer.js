@@ -8,7 +8,12 @@ const QuizzesContainer = () => {
     const [quizzes, setQuizzes] = useState([]);
 
     const getQuizzes = params => {
-        const config = params ? { params } : {};
+        const config = {
+            headers: { 'Authorization': `Bearer ${localStorage.getItem('jwt')}` },
+        }
+
+        if(params)
+            config.params = params;
 
         axios.get(`${apiHost}/api/quizzes`, config).then(res => {
             setQuizzes(res.data)

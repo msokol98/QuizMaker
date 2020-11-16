@@ -12,7 +12,9 @@ const QuizContainer = props => {
     const [submitted, setSubmitted] = useState(false);
 
     const fetchQuiz = () => {
-        axios.get(`${apiHost}/api/quizzes/${quizId}`).then(res => {
+        axios.get(`${apiHost}/api/quizzes/${quizId}`, {
+            headers: { 'Authorization': `Bearer ${localStorage.getItem('jwt')}` }
+        }).then(res => {
             const quiz = res.data;
             quiz.questions = orderQuestions(quiz.questions);
             setQuiz(quiz);
