@@ -12,7 +12,10 @@ public interface QuizService {
     ResponseEntity<Long> createQuiz(Quiz quiz, String creatorEmail) throws MissingQuizCreatorException;
     Quiz getQuizById(long id) throws NoSuchQuizException;
     Set<Quiz> getQuizzesCreated(String creatorEmail) throws MissingQuizCreatorException;
+
     List<Quiz> getQuizzes();
     List<Quiz> getQuizzes(String topic);
+    List<Quiz> getQuizzes(int page, int size);
+
     ResponseEntity<?> patchQuiz(long quizId, Quiz updatedQuiz, String creatorEmail) throws MissingQuizCreatorException, NoSuchQuizException;
 }

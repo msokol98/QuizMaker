@@ -6,11 +6,11 @@ import io.sokol.quizmaker.entity.Question;
 import io.sokol.quizmaker.entity.Quiz;
 import io.sokol.quizmaker.exception.MissingQuizCreatorException;
 import io.sokol.quizmaker.exception.NoSuchQuizException;
-import io.sokol.quizmaker.repository.AnswerRepository;
 import io.sokol.quizmaker.repository.PersonRepository;
-import io.sokol.quizmaker.repository.QuestionRepository;
 import io.sokol.quizmaker.repository.QuizRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -68,6 +68,12 @@ public class QuizServiceImpl implements QuizService {
     @Override
     public List<Quiz> getQuizzes(String topic) {
         return getQuizzes().stream().filter(quiz -> quiz.getTopic().equals(topic)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Quiz> getQuizzes(int page, int size) {
+        Pageable pageAndSize = PageRequest.of(page, size);
+        return quizRepository.findAll(pageAndSize).getContent();
     }
 
     @Override

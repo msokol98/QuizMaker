@@ -11,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -24,15 +23,34 @@ public class QuizController {
     @Autowired
     private JwtService jwtService;
 
-    @PostMapping("/api/quizzes")
+        @PostMapping("/api/quizzes")
     public ResponseEntity<Long> createQuiz(@RequestBody Quiz quiz, @RequestHeader("Authorization") String authHeader) throws MissingQuizCreatorException {
         String creatorEmail = jwtService.extractUsername(jwtService.getToken(authHeader));
         return quizService.createQuiz(quiz, creatorEmail);
     }
 
     @GetMapping("/api/quizzes")
-    public List<QuizDTO> getQuizzes(@RequestParam(required = false) String topic) {
-        List<Quiz> quizzes = topic == null ? quizService.getQuizzes() : quizService.getQuizzes(topic);
+    public List<QuizDTO> getQuizzes(@RequestParam(required = false) String topic,
+                                    @RequestParam(required = false) Integer page,
+                                    @RequestParam(required = false) Integer size) {
+        List<Quiz> quizzes;
+
+        // paginated and filtered
+        if(topic != null && page != null)
+            throw new RuntimeException("Do not yet support both filtering and paginating at same time");
+
+        // filtered
+        else if(topic != null)
+            quizzes = quizService.getQuizzes(topic);
+
+        //paginate
+        else if(page != null)
+            quizzes = quizService.getQuizzes(page, size);
+
+        // all quizzes
+        else
+            quizzes = quizService.getQuizzes();
+
         return quizzes.stream().map(QuizDTO::new).collect(Collectors.toList());
     }
 

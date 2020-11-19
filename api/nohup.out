@@ -1,0 +1,54 @@
+OpenJDK 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated in version 9.0 and will likely be removed in a future release.
+2020-11-18 17:51:17,500 [   2672]   WARN - Container.ComponentManagerImpl - Do not use constructor injection (requestorClass=org.jetbrains.android.compose.AndroidComposeAutoDocumentation) 
+2020-11-18 17:51:18,461 [   3633]   WARN - tartup.impl.StartupManagerImpl - Activities registered via registerPostStartupActivity must be dumb-aware: org.jetbrains.kotlin.idea.configuration.ui.KotlinConfigurationCheckerComponent$projectOpened$1@68fc6c80 
+2020-11-18 17:51:21,267 [   6439]   WARN - com.intellij.util.xmlb.Binding - no accessors for org.jetbrains.kotlin.idea.highlighter.KotlinDefaultHighlightingSettingsProvider 
+2020-11-18 17:51:22,550 [   7722]   WARN - ion.impl.NotificationCollector - Notification group 'Heap Dump Analysis' is already registered in whitelist 
+2020-11-18 17:51:22,551 [   7723]   WARN - ion.impl.NotificationCollector - Notification group 'Low Memory' is already registered in whitelist 
+2020-11-18 17:51:50,591 [  35763]   WARN - com.intellij.util.xmlb.Binding - no accessors for org.jetbrains.idea.maven.server.MavenWrapperMapping$State 
+2020-11-18 17:52:11,449 [  56621]   WARN - util.DeprecatedMethodException - The default implementation of method 'com.intellij.execution.configurations.ConfigurationFactory.getId' is deprecated, you need to override it in 'class org.jetbrains.kotlin.idea.nodejs.protractor.KotlinProtractorConfigurationType$1'. The default implementation delegates to 'getName' which may be localized but return value of this method must not depend on current localization. 
+com.intellij.util.DeprecatedMethodException: The default implementation of method 'com.intellij.execution.configurations.ConfigurationFactory.getId' is deprecated, you need to override it in 'class org.jetbrains.kotlin.idea.nodejs.protractor.KotlinProtractorConfigurationType$1'. The default implementation delegates to 'getName' which may be localized but return value of this method must not depend on current localization.
+	at com.intellij.util.DeprecatedMethodException.reportDefaultImplementation(DeprecatedMethodException.java:38)
+	at com.intellij.execution.configurations.ConfigurationFactory.getId(ConfigurationFactory.java:80)
+	at com.intellij.execution.impl.RunManagerImplKt.getFactoryKey(RunManagerImpl.kt:1313)
+	at com.intellij.execution.impl.RunManagerImplKt.access$getFactoryKey(RunManagerImpl.kt:1)
+	at com.intellij.execution.impl.RunManagerImpl.getConfigurationTemplate(RunManagerImpl.kt:326)
+	at com.intellij.execution.impl.RunManagerImpl.createConfiguration(RunManagerImpl.kt:251)
+	at com.intellij.execution.actions.RunConfigurationProducer.cloneTemplateConfigurationStatic(RunConfigurationProducer.java:258)
+	at com.intellij.execution.actions.RunConfigurationProducer.cloneTemplateConfiguration(RunConfigurationProducer.java:248)
+	at com.intellij.execution.actions.RunConfigurationProducer.createConfigurationFromContext(RunConfigurationProducer.java:97)
+	at com.intellij.execution.actions.RunConfigurationProducer.findOrCreateConfigurationFromContext(RunConfigurationProducer.java:198)
+	at com.intellij.execution.actions.PreferredProducerFind.doGetConfigurationsFromContext(PreferredProducerFind.java:110)
+	at com.intellij.execution.actions.PreferredProducerFind.getConfigurationsFromContext(PreferredProducerFind.java:93)
+	at com.intellij.execution.actions.ConfigurationContext.getConfigurationsFromContext(ConfigurationContext.java:360)
+	at com.intellij.execution.lineMarker.ExecutorAction$Companion.computeConfigurations(ExecutorAction.kt:63)
+	at com.intellij.execution.lineMarker.ExecutorAction$Companion.getConfigurations(ExecutorAction.kt:55)
+	at com.intellij.execution.lineMarker.ExecutorAction$Companion.access$getConfigurations(ExecutorAction.kt:28)
+	at com.intellij.execution.lineMarker.ExecutorAction.getActionName(ExecutorAction.kt:97)
+	at com.intellij.execution.lineMarker.ExecutorAction.update(ExecutorAction.kt:72)
+	at com.intellij.execution.lineMarker.LineMarkerActionWrapper.update(LineMarkerActionWrapper.java:86)
+	at com.intellij.codeInsight.daemon.impl.GutterIntentionAction.isAvailable(GutterIntentionAction.java:65)
+	at com.intellij.codeInsight.daemon.impl.GutterIntentionMenuContributor.addActions(GutterIntentionMenuContributor.java:104)
+	at com.intellij.codeInsight.daemon.impl.GutterIntentionMenuContributor.addActions(GutterIntentionMenuContributor.java:70)
+	at com.intellij.codeInsight.daemon.impl.GutterIntentionMenuContributor.collectActions(GutterIntentionMenuContributor.java:50)
+	at com.intellij.codeInsight.daemon.impl.ShowIntentionsPass.getActionsToShow(ShowIntentionsPass.java:341)
+	at com.intellij.codeInsight.daemon.impl.ShowIntentionsPass.doCollectInformation(ShowIntentionsPass.java:226)
+	at com.intellij.codeHighlighting.TextEditorHighlightingPass.collectInformation(TextEditorHighlightingPass.java:54)
+	at com.intellij.codeInsight.daemon.impl.PassExecutorService$ScheduledPass.lambda$doRun$1(PassExecutorService.java:399)
+	at com.intellij.openapi.application.impl.ApplicationImpl.tryRunReadAction(ApplicationImpl.java:1110)
+	at com.intellij.codeInsight.daemon.impl.PassExecutorService$ScheduledPass.lambda$doRun$2(PassExecutorService.java:392)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.registerIndicatorAndRun(CoreProgressManager.java:629)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.executeProcessUnderProgress(CoreProgressManager.java:581)
+	at com.intellij.openapi.progress.impl.ProgressManagerImpl.executeProcessUnderProgress(ProgressManagerImpl.java:60)
+	at com.intellij.codeInsight.daemon.impl.PassExecutorService$ScheduledPass.doRun(PassExecutorService.java:391)
+	at com.intellij.codeInsight.daemon.impl.PassExecutorService$ScheduledPass.lambda$run$0(PassExecutorService.java:367)
+	at com.intellij.openapi.application.impl.ReadMostlyRWLock.executeByImpatientReader(ReadMostlyRWLock.java:170)
+	at com.intellij.openapi.application.impl.ApplicationImpl.executeByImpatientReader(ApplicationImpl.java:182)
+	at com.intellij.codeInsight.daemon.impl.PassExecutorService$ScheduledPass.run(PassExecutorService.java:365)
+	at com.intellij.concurrency.JobLauncherImpl$VoidForkJoinTask$1.exec(JobLauncherImpl.java:181)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1020)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1656)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1594)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:183)
+2020-11-18 17:57:41,532 [ 386704]   WARN - com.intellij.util.xmlb.Binding - no accessors for org.jetbrains.kotlin.idea.scripting.gradle.GradleScriptInputsWatcher$Storage 
+2020-11-18 17:57:41,549 [ 386721]   WARN - com.intellij.util.xmlb.Binding - no accessors for org.jetbrains.kotlin.idea.core.script.configuration.utils.ScriptClassRootsStorage 
