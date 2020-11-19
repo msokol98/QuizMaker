@@ -26,9 +26,7 @@ const QuizzesContainer = () => {
         else
             getQuizzes({topic})
     }
-
-    if(!quizzes) return <Loading />
-
+    
     return(
         <div className="portal">
             <Quizzes quizzes={quizzes} filterByTopic={filterByTopic} />
