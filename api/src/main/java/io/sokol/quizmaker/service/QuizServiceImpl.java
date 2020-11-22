@@ -62,18 +62,28 @@ public class QuizServiceImpl implements QuizService {
 
     @Override
     public List<Quiz> getQuizzes() {
-        return quizRepository.findAll().stream().sorted(Comparator.comparing(Quiz::getCreationTimestamp)).collect(Collectors.toList());
+        return sortQuizzesByTimestamp(quizRepository.findAll());
     }
 
     @Override
     public List<Quiz> getQuizzes(String topic) {
-        return getQuizzes().stream().filter(quiz -> quiz.getTopic().equals(topic)).collect(Collectors.toList());
+        return getQuizzes().
+                stream().
+                filter(quiz -> quiz.getTopic().equals(topic)).
+                collect(Collectors.toList());
     }
 
     @Override
     public List<Quiz> getQuizzes(int page, int size) {
         Pageable pageAndSize = PageRequest.of(page, size);
-        return quizRepository.findAll(pageAndSize).getContent();
+        return sortQuizzesByTimestamp(quizRepository.findAll(pageAndSize).getContent());
+    }
+
+    private List<Quiz> sortQuizzesByTimestamp(List<Quiz> quizzes) {
+        return quizzes.
+                stream().
+                sorted(Comparator.comparing(Quiz::getCreationTimestamp).reversed()).
+                collect(Collectors.toList());
     }
 
     @Override
