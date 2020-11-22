@@ -1,5 +1,6 @@
 import React from 'react';
 import Question from './question';
+import Loading from '../loading';
 
 const Quiz = ({ quiz, checkAnswers, setAnswer }) => {
 
@@ -7,11 +8,16 @@ const Quiz = ({ quiz, checkAnswers, setAnswer }) => {
 
     return(
         <div className="container" style={{padding: "3% 0", maxWidth: "600px"}}>
-            <h3>Quiz on <strong>{topic}</strong> by {creator}</h3>
+            
+            {!quiz ? <Loading /> :
+            
+            <>
+                <h3>Quiz on <strong>{topic}</strong> by {creator}</h3>
 
-            {questions && questions.map((question, idx) => <Question key={idx} number={idx+1} question={question} setAnswer={setAnswer} />)}
+                {questions && questions.map((question, idx) => <Question key={idx} number={idx+1} question={question} setAnswer={setAnswer} />)}
 
-            <button onClick={checkAnswers} className="button is-info">Check Answers</button>
+                <button onClick={checkAnswers} className="button is-info">Check Answers</button>
+            </>}
         </div>
     )
 };

@@ -43,9 +43,6 @@ const QuizContainer = props => {
     if(submitted)
         return <GradedQuiz quiz={quiz} givenAnswers={givenAnswers} retake={() => window.location.reload(false)  } />
 
-    if(!quiz)
-        return <div>Loading...</div>
-
     return <Quiz quiz={{...quiz, quizId}} checkAnswers={checkAnswers} setAnswer={setAnswer}  />
 }
  
