@@ -8,9 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 
 @Service("jwtService")
@@ -50,8 +48,10 @@ public class JwtServiceImpl implements JwtService {
 
     private String createToken(Map<String, Object> claims, String subject) {
 
+        Date expirationDate = new GregorianCalendar(2020, Calendar.DECEMBER, 31).getTime();
+
         return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10))
+                .setExpiration(expirationDate)
                 .signWith(SignatureAlgorithm.HS256, SECRET_KEY).compact();
     }
 
