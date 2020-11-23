@@ -52,21 +52,21 @@ How it works:
 
 ### API Documentation
 
-**Index**\
+**Index**
 
-Purpose:
+Purpose:  
 	Retrieves quizzes created by anyone (sorted by creation timestamp by default)
-Endpoint:
+Endpoint:  
 	GET  http://45.33.84.167:8080/api/quizzes
-Request Params:
+Request Params:  
 	topic (string) - Optional. Specifies a topic by which to filter quizzes.
 	page (integer) - Optional. Used for pagination.
 	size (integer) - Optional. Specifies how many quizzes to return. 
  
- Note: If page or size are omitted, then no pagination occurs.
- Note 2: API does not currently provide simultaneous filtering by topic and pagination. 
-Response:
-	Responds with an array in JSON format containing the selected quizzes.
+ Note: If page or size are omitted, then no pagination occurs.  
+ Note 2: API does not currently provide simultaneous filtering by topic and pagination.   
+Response:  
+	Responds with an array in JSON format containing the selected quizzes.  
 
 ### Built With
 These are the major technologies that I used to create this web application.
