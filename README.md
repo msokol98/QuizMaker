@@ -7,6 +7,7 @@
   * [Overview](#overview)
   * [Screenshots](#screenshots)
   * [API Documentation](#api-documentation)
+  * [Authentication and Authorization](#authentication-and-authorization)
   * [Built With](#built-with)
 * [Contact](#contact)
 
@@ -135,6 +136,16 @@ Note 3: Users can only delete their own quizzes.
 Response:  
 	* Responds with an appropriate HTTP status code.
 
+### Authentication and Authorization
+
+There is a signup API that takes a JSON object representing user details (email, password, first name, last name).  
+Spring Security and Spring Data JPA is used to persist the new user in a PostgreSQL database.
+
+There is a login API that takes a JSON object representing an authentication request (email, password). If the 
+credentials are valid, then a JSON web token is returned to the client.
+
+The JSON web token should be stored in the client's web browser. When using APIs that require a valid JWT,  
+frontend code needs to provide the following request header: Authorization: `Bearer ${jwt}`  
 
 ### Built With
 These are the major technologies that I used to create this web application.
