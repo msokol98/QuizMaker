@@ -8,6 +8,7 @@
   * [Screenshots](#screenshots)
   * [API Documentation](#api-documentation)
   * [Authentication and Authorization](#authentication-and-authorization)
+  * [Database Structure](#database-structure)
   * [Built With](#built-with)
 * [Contact](#contact)
 
@@ -146,6 +147,20 @@ credentials are valid, then a JSON web token is returned to the client.
 
 The JSON web token should be stored in the client's web browser. When using APIs that require a valid JWT,  
 frontend code needs to provide the following request header: Authorization: `Bearer ${jwt}`  
+
+### Database Structure
+
+A relational database persists the following entities:
+* User
+* Quiz
+* Question
+* Answer 
+
+User has a one-to-many relationship with Quiz because users can create many quizzes.  
+Quiz has a one-to-many relationship with Question beecause a quiz can have many questions.  
+Question has a one-to-many relationship with Answer because a question has at least two answers. 
+
+Hibernate and Spring Data JPA are used to automatically map Java objects to entities persisted in a PostgreSQL database.
 
 ### Built With
 These are the major technologies that I used to create this web application.
