@@ -4,6 +4,7 @@
 ## Table of Contents
 
 * [About the Project](#about-the-project)
+  * [Screenshots](#screenshots)
   * [Built With](#built-with)
 * [Contact](#contact)
 
@@ -24,7 +25,7 @@ How it works:
 * Add questions to your quiz, providing incorrect answers and one correct answer.
 * Share the quiz link with your friends.
 
-Example screenshots:
+### Screenshots
 
 **Landing page**\
 ![landing][product-screenshot-landing]
