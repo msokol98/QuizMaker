@@ -6,6 +6,7 @@
 * [About the Project](#about-the-project)
   * [Overview](#overview)
   * [Screenshots](#screenshots)
+  * [API Documentation](#api)
   * [Built With](#built-with)
 * [Contact](#contact)
 
@@ -47,6 +48,9 @@ How it works:
 
 **Account portal**\
 ![account-portal][product-screenshot-account-portal]
+
+
+### Api
 
 ### Built With
 These are the major technologies that I used to create this web application.
