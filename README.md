@@ -29,15 +29,20 @@ Example screenshots:
 **Landing page**\
 ![landing][product-screenshot-landing]
 
-**Adding a song**\
-![add-song][product-screenshot-add-song]
+**Creating a quiz**\
+![create-quiz][product-screenshot-create-quiz]
 
-**Seeing party members**\
-![members][product-screenshot-members]
+**Taking a quiz**\
+![taking-quiz][product-screenshot-taking-quiz]
 
-**Seeing party info**\
-![party-info][product-screenshot-party-info]
+**Quiz feedback**\
+![quiz-feedback][product-screenshot-quiz-feedback]
 
+**Browse public quizzes**\
+![view-quizzes][product-screenshot-view-quizzes]
+
+**Account portal**\
+![account-portal][product-screenshot-account-portal]
 
 ### Built With
 These are the major technologies that I used to create this web application.
