@@ -26,9 +26,8 @@ How it works:
 
 Example screenshots:
 
-**Viewing the party queue**\
-![queue-desktop][product-screenshot-queue-desktop]
-![queue-mobile][product-screenshot-queue-mobile]
+**Landing page**\
+![landing][product-screenshot-landing]
 
 **Adding a song**\
 ![add-song][product-screenshot-add-song]
