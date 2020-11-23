@@ -60,8 +60,9 @@ Mitchell Sokol - msokol@live.unc.edu
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[product-screenshot-queue-desktop]: https://github.com/msokol98/party-q/blob/master/screenshots/queue_desktop.png
-[product-screenshot-queue-mobile]: https://github.com/msokol98/party-q/blob/master/screenshots/queue_mobile.png
-[product-screenshot-add-song]: https://github.com/msokol98/party-q/blob/master/screenshots/add_song.png
-[product-screenshot-members]: https://github.com/msokol98/party-q/blob/master/screenshots/members.png
-[product-screenshot-party-info]: https://github.com/msokol98/party-q/blob/master/screenshots/party_info.png
+[product-screenshot-account-portal]: https://github.com/msokol98/quizmaker/blob/master/screenshots/accountportal.png
+[product-screenshot-create-quiz]: https://github.com/msokol98/quizmaker/blob/master/screenshots/createquiz.png
+[product-screenshot-landing]: https://github.com/msokol98/quizmaker/blob/master/screenshots/landing.png
+[product-screenshot-quiz-feedback]: https://github.com/msokol98/quizmaker/blob/master/screenshots/quizfeedback.png
+[product-screenshot-view-quizzes]: https://github.com/msokol98/quizmaker/blob/master/screenshots/takequizzes.png
+[product-screenshot-taking-quiz]: https://github.com/msokol98/quizmaker/blob/master/screenshots/takingaquiz.png
