@@ -152,6 +152,9 @@ These are the major technologies that I used to create this web application.
 
 * [React](https://reactjs.org/)
 * [Spring Boot](https://spring.io/projects/spring-boot)
+* [Spring MVC](https://docs.spring.io/spring-framework/docs/3.2.x/spring-framework-reference/html/mvc.html)
+* [Spring Security](https://spring.io/projects/spring-security)
+* [PostgreSQL](https://www.postgresql.org)
 * [Ubuntu Server from Linode](https://linode.com)
 
 
