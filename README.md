@@ -96,6 +96,7 @@ Endpoint:
 	
 Request Body:    
 	* A JSON object that represents a quiz. The object properties are a topic (string), questions (array), correct answer (string).
+	
 Response:  
 	* Responds with the quiz id of the newly created quiz so that the website can present the user with a link to the quiz.	
 
