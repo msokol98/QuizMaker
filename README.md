@@ -6,7 +6,7 @@
 * [About the Project](#about-the-project)
   * [Overview](#overview)
   * [Screenshots](#screenshots)
-  * [API Documentation](#api)
+  * [API Documentation](#api-documentation)
   * [Built With](#built-with)
 * [Contact](#contact)
 
