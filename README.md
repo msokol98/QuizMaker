@@ -4,6 +4,7 @@
 ## Table of Contents
 
 * [About the Project](#about-the-project)
+  * [Overview](#overview)
   * [Screenshots](#screenshots)
   * [Built With](#built-with)
 * [Contact](#contact)
@@ -13,7 +14,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-http://45.33.84.167/
+Accessible at http://45.33.84.167
+
+### Overview
 
 Motivation for QuizMaker web application:
 
