@@ -154,11 +154,11 @@ A relational database persists the following entities:
 * User
 * Quiz
 * Question
-* Answer 
+* AnswerChoice
 
 User has a one-to-many relationship with Quiz because users can create many quizzes.  
 Quiz has a one-to-many relationship with Question beecause a quiz can have many questions.  
-Question has a one-to-many relationship with Answer because a question has at least two answers. 
+Question has a one-to-many relationship with AnswerChoice because a question has at least two answer choices. 
 
 Hibernate and Spring Data JPA are used to automatically map Java objects to entities persisted in a PostgreSQL database.
 
