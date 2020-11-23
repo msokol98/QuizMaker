@@ -12,19 +12,17 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-http://3.136.106.200
+http://45.33.84.167/
 
-Motivation for Party Q web application:
+Motivation for QuizMaker web application:
 
-You and your friends have different music preferences. Instead of one person controlling the Spotify playlist,
-now everyone can add a song or track to the playlist. 
-
+The website allows you to make custom quizzes, which you can then share with your friends. 
 
 How it works:
-* You and your friend authenticate on my website through Spotify (oauth).
-* A friend with Spotify premium hosts the party.
-* Anyone can join this party and add songs to the queue.
-* Chosen songs will play through the host's Spotify app.
+* Register an account and sign in.
+* Click 'Create Quiz' on the homepage or navigation bar.
+* Add questions to your quiz, providing incorrect answers and one correct answer.
+* Share the quiz link with your friends.
 
 Example screenshots:
 
