@@ -45,8 +45,7 @@ These are the major technologies that I used to create this web application.
 
 * [React](https://reactjs.org/)
 * [Spring Boot](https://spring.io/projects/spring-boot)
-* [Spotify API](https://developer.spotify.com/)
-* [AWS EC2 running Red Hat Enterprise Linux](https://aws.amazon.com)
+* [Ubuntu Server from Linode](https://linode.com)
 
 
 <!-- CONTACT -->
