@@ -69,8 +69,71 @@ Request Params:
  Note 2: API does not currently provide simultaneous filtering by topic and pagination.   
  
 Response:  
-	* Responds with an array in JSON format containing the selected quizzes.  
+	* Responds with an array in JSON format containing the selected quizzes.
 	
+	
+**Read**
+
+Purpose:  
+	* Retrieves a quiz of a certain id.
+	
+Endpoint:  
+	* GET  http://45.33.84.167:8080/api/quizzes/:id  
+ 
+Note: A valid JSON web token must be provided in the request headers.  
+
+Response:  
+	* Responds with a quiz JSON object, including topic, questions and correct answer.
+	
+
+**Create**
+
+Purpose:  
+	* Creates a new quiz in the database
+	
+Endpoint:  
+	* POST  http://45.33.84.167:8080/api/quizzes
+	
+Request Body:    
+	* A JSON object that represents a quiz. The object properties are a topic (string), questions (array), correct answer (string).
+Response:  
+	* Responds with the quiz id of the newly created quiz so that the website can present the user with a link to the quiz.	
+
+Note: A valid JSON web token must be provided in the request headers.
+
+
+**Update**
+
+Purpose:  
+	* Allows client to add more questions to an existing quiz.
+	
+Endpoint:  
+	* PATCH  http://45.33.84.167:8080/api/quizzes/:id  
+	
+Request Body:
+	* A JSON object that represents the quiz with the added questions.
+ 
+Note: A valid JSON web token must be provided in the request headers.  
+
+Response:  
+	* Responds with an appropriate HTTP status code.
+	
+	
+**Destroy**
+
+Purpose:  
+	* Deletes a quiz specified by an id.
+	
+Endpoint:  
+	* DELETE  http://45.33.84.167:8080/quizzes/:id  
+	
+Note: The endpoint does not include "/api" because this endpoint is provided automatically by Spring Data Rest.
+Note 2: A valid JSON web token must be provided in the request headers.  
+Note 3: Users can only delete their own quizzes.
+
+Response:  
+	* Responds with an appropriate HTTP status code.
+
 
 ### Built With
 These are the major technologies that I used to create this web application.
