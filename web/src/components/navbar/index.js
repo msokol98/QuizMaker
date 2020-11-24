@@ -29,7 +29,7 @@ const Nav = () => {
 
                     <div className='navbar-brand-inner' onClick={() => window.location.pathname='/'} >
                         <img src={icon} alt='logo' width='35px' />
-                        <h5 className='subtitle has-text-weight-normal' style={{margin: '0 10px'}}>Sokol Quiz Maker</h5>
+                        <h5 className='subtitle has-text-weight-normal' style={{margin: '0 10px'}}>Sokol's Quiz Maker</h5>
                         <img src={icon} alt='logo' width='35px' />
                     </div>
 

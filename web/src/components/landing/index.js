@@ -188,7 +188,7 @@ const Landing = () => (
 
           <div style={{textAlign: 'left'}}>Website by Mitchell Sokol - Personal Project 2020
             <br/>Made with React, Bulma, and Java Spring Boot
-            <br/>Deployed onto the web using an AWS EC2 RHEL instance
+            <br/>Deployed onto Ubuntu Server hosted by Linode
             <br /><a href='https://github.com/msokol98/quizmaker'>See source code</a>
           </div>
 
