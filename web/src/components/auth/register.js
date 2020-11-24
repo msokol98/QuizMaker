@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import FormTemplate from './form';
 import { apiHost } from 'config';
 import axios from 'axios';
 
 const RegistrationForm = () => {
 
+    const [error, setError] = useState(false);
+
     const register = userDetails => {
         axios.post(`${apiHost}/register`, userDetails).then(() => {
             window.location = '/login'
-        });
+        }).catch(() => setError(true))
     };
 
     const isValid = fields => fields['password'].value === fields['passwordConfirmation'].value;
@@ -27,6 +29,8 @@ const RegistrationForm = () => {
             submit={register}  
             validate={isValid}
             validationErrorMessage="The given passwords do not match"
+            error={error}
+            serverErrorMessage="User with given email already exists"
             header="Sign Up"
         />
     )
