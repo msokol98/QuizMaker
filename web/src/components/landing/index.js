@@ -111,10 +111,10 @@ const Landing = () => (
               </figure>
               <div className='media-content'>
                 <blockquote>
-                    This website is great! I can make fun quizzes for my friends to take on any subject.
-                      I've made quizzes on pop culture, geography and math. My friends and I are having
-                      a really good time using this web application. I think everyone should give this 
-                      website a try. It's free after all (and open source). Yahoo!!!
+                      I really enjoy using Sokol's Quiz Maker. When I want to test my friends on questions I make, 
+                      I know I can come to this website. It's easy to use, nice to look at and costs no money. It's a win-win-win
+                      for everybody. So I highly suggest that everyone starts using this website. Give it a try today by creating 
+                      a quiz. You could do it on math, politics or anything really. Then, just share the link with your friends. Awesome!
                 </blockquote>
               </div>
             </article>
@@ -169,9 +169,9 @@ const Landing = () => (
               <div className='column'>
                 <h6 className='subtitle has-text-grey'>Popular Subjects</h6>
 
+                <div>Politics</div>
+                <div>General Knowledge</div>
                 <div>Geography</div>
-                <div>Pop Culture</div>
-                <div>Math</div>
               </div>
 
               <div className='column'>
